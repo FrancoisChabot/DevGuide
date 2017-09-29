@@ -25,6 +25,11 @@ Every single external dependency, submodule or copied, goes in there.
 - All tests live under a `tests` top-level directory
 - gtest is supplemented with a memoy-leak detector
 
+As for testing guidelines in general:
+
+- Every reported bug fixed should have a unit test written that fails prior to the fix, and passes afterwards. (if possible and reasonable).
+- Avoid writing tests that simply re-implements a feature.
+
 ### Continous integration
 
 [travis-ci](travis-ci.org) for unix-like platforms, and/or [Appveyor](https://www.appveyor.com/) for windows build. Remember to put status badges in the readme!
@@ -63,7 +68,7 @@ add_library(header_sanitizer ${HEADER_SAN_SRC})
 
 ### The library should live in `include/project_name`
 
-Not only that, but that directory should **only** contain the public headers of the project.
+Not only that, but that directory should **only** contain the public headers of the project, so that the installation process is a simple directory copy.
 
 ### There should be a top-level include
 
